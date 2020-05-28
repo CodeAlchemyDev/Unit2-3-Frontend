@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from "react-redux";
+
 
 import VolunteerTaskList from './VolunteerTaskList';
+import { apiAuth } from '../utils/apiAuth';
+import {getVolunteerData} from '../store/actions/volunteerActions';
 
-export default function VolunteerDashboard() {
-	const VolunteerDBoard = styled.div`
+const VolunteerDBoard = styled.div`
 		position: absolute;
 		left: 50%;
 		top: 50%;
@@ -22,40 +25,19 @@ export default function VolunteerDashboard() {
 		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 	`;
 
-	const tasks = [
-		{
-			task_id: 16,
-			task_name: 'Zoom Session',
-			created_by: 2,
-			assigned_to: 1,
-			description: 'Prepare the PVD and DB Schema',
-			due_date: '',
-			completed: 1
-		},
-		{
-			task_id: 17,
-			task_name: 'Study Session',
-			created_by: 2,
-			assigned_to: 4,
-			description: 'Prepare the PVD and DB Schema',
-			due_date: '',
-			completed: 1
-		},
-		{
-			task_id: 18,
-			task_name: 'Study Session',
-			created_by: 2,
-			assigned_to: 8,
-			description: 'Prepare the PVD and DB Schema',
-			due_date: '',
-			completed: 0
-		}
-	];
+export default function VolunteerDashboard() {
+    const dispatch = useDispatch();
+    
+	useEffect(() => {
+        dispatch(getVolunteerData());
+    }, []);
 
+	
+
+	const tasks = useSelector(state => state.volunteers.taskList);
 	return (
 		<VolunteerDBoard>
 			<h1> Welcome to Volunteer Dashboard! </h1>
-
 			<VolunteerTaskList tasks={tasks} />
 		</VolunteerDBoard>
 	);

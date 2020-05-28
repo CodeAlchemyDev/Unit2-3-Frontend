@@ -8,8 +8,6 @@ const Volunteer = () => {
 	return (
 		<>
 			{/* <Register /> */}
-			<h1> Welcome to Volunteer Dashboard! </h1>
-
 			<VolunteerDashboard />
 		</>
 	);
