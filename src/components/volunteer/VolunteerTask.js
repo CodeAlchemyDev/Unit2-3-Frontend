@@ -1,14 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-export default function VolunteerTask(props){
-    return (
-        <div>
-            <h3>Task name : {props.task.task_name}</h3>
-            <p>Created by : {props.task.created_by}</p>
-            <p>Assigned to : {props.task.assigned_to}</p>
-            <p>Description : {props.task.description}</p>
-            <p>Due date : {props.task.due_date}</p>
-            <p>Completed: {props.task.completed}</p>
-        </div>
-    );
+export default function VolunteerTask(props) {
+  const tasks = useSelector((state) => state.tasksList[props.id]);
+
+  return (
+    <div>
+      <h3>Task name : {tasks.task_name}</h3>
+      <p>Created by : {tasks.created_by}</p>
+      <p>Assigned to : {tasks.assigned_to}</p>
+      <p>Description : {tasks.description}</p>
+      <p>Due date : {tasks.due_date}</p>
+      <p>Completed: {tasks.completed}</p>
+    </div>
+  );
 }

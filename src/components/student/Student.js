@@ -1,29 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { apiAuth } from "../../utils/apiAuth";
+import React from "react";
 import { updateStudent } from "../../redux/actions/studentActions";
 import { connect } from "react-redux";
-import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import StudentList from "./StudentList";
 
 const Student = (props) => {
   console.log("I am a Student:", props);
-  const [volunteers, setVolunteers] = useState([]);
-  const id = useSelector((state) => state.student[props.id]);
-  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-
-  useEffect(() => {
-    // TODO: Change Endpoint to Proper Data
-    apiAuth()
-      .get(`student/view`)
-      .then((response) => {
-        console.log("I am Authed:", response);
-        setVolunteers(response.data);
-      })
-      .catch((err) => console.log(err, "Can't find volunteers"));
-  }, [id]);
-
-  //   console.log("initial:", props);
 
   const onSubmit = (student, e) => {
     console.log("submitted: ", student);
@@ -45,13 +28,7 @@ const Student = (props) => {
 
       <div className="volunteer-list">
         <h3>Choose a Volunteer</h3>
-        {volunteers.map((volunteer) => {
-          return (
-            <li key={volunteer.id}>
-              {`${volunteer.firstName} ${volunteer.lastName}`}
-            </li>
-          );
-        })}
+        <StudentList props={props} />
       </div>
 
       <div className="profile-fields">
