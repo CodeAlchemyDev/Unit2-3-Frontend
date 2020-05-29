@@ -140,6 +140,24 @@ header .headliner .subTitler {
 .signInForm .signInInput {
   width: 300px;
 }
+.signInForm .newUserLink {
+  width: 100%;
+  font-family: "gPro";
+  letter-spacing: 2px;
+  color: black;
+  font-size: 17px;
+  margin: 30px auto 0px auto;
+}
+.signInForm .newUserLink .subLink {
+  font-famiy: 'gPro';
+  font-size: 17px;
+  letter-spacing: 2px;
+  color: #24c2d7;
+  text-align: center;
+}
+.signInForm .newUserLink .subLink:hover {
+  cursor: pointer;
+}
 .registerForm {
   position: absolute;
   left: 50%;
@@ -287,6 +305,7 @@ button {
   background-color: #4dd0e1;
   background-image: linear-gradient(to right, #4dd0e1, #1ee7e2);
   color: #fff;
+  margin: 10px auto 0px auto;
   cursor: pointer;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }

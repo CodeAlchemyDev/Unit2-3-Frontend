@@ -4,7 +4,10 @@ import { apiAuth } from "../../utils/apiAuth";
 // import changeHandler from "../../helpers/changeHandler";
 // import Button from "../buttons/Buttons";
 
+
 export default function SignInForm(props) {
+
+
   // Set up yup validation schema
   const formSchema = yup.object().shape({
     userName: yup
@@ -107,6 +110,12 @@ export default function SignInForm(props) {
         ) : null}
 
         <button type="submit">Login</button>
+
+        <p className="newUserLink">New User? <span
+
+            className='subLink'
+            onClick={props.registerClick}
+        >Click here to get started!</span></p>
       </form>
     </>
   );
