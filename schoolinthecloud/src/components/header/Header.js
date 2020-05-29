@@ -37,11 +37,7 @@ const Header = (props) => {
       <section className="headliner" onClick={props.bodyClicker}>
         {/*If signin or register state is true will remove h1 text and subtext and*/}
         {/*mount signin or register window*/}
-        {props.signInState && !props.registerState ? (
-          <SignInForm registerClick={props.registerClick} />
-        ) : !props.signInState && props.registerState ? (
-          <Register />
-        ) : (
+
           <>
             <Text
 
