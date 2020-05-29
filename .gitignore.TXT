@@ -1,6 +1,0 @@
-# dependencies
-/schoolinthcloud/node_modules
-/schoolinthcloud/.pnp
-/schoolinthcloud/.pnp.js
-/schoolinthcloud/.idea
-

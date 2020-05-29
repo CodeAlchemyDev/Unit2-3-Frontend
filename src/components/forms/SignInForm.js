@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { apiAuth } from "../../utils/apiAuth";
-import Validate from "./Validation";
+// import changeHandler from "../../helpers/changeHandler";
+// import Button from "../buttons/Buttons";
+
 
 export default function SignInForm(props) {
+
 
   // Set up yup validation schema
   const formSchema = yup.object().shape({
@@ -28,14 +31,34 @@ export default function SignInForm(props) {
     password: "",
   });
 
+  // validation on input change
+  const validate = (e) => {
+    yup
+      .reach(formSchema, e.target.name)
+      .validate(e.target.value)
+      .then((valid) => {
+        setErrorState({
+          ...errorState,
+          [e.target.name]: "",
+        });
+      })
+      .catch((err) => {
+        setErrorState({
+          ...errorState,
+          [e.target.name]: err.errors[0],
+        });
+      });
+  };
   const inputChange = (e) => {
     e.persist();
     console.log(e.target.value);
-    Validate(formSchema, e, errorState, setErrorState)
+    validate(e);
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
   const formSubmit = (e) => {
+    // console.log("submit");
+    // console.log(formState);
     e.preventDefault();
     apiAuth()
       .post("/login", { formState })
@@ -51,15 +74,11 @@ export default function SignInForm(props) {
 
   return (
     <>
-
       <form onSubmit={formSubmit} className="signInForm">
-
         <h2 className="signInTitle">Sign In</h2>
 
         <label htmlFor="userName">
-
           Username:
-
           <input
             className="signInInput"
             type="text"
@@ -68,7 +87,6 @@ export default function SignInForm(props) {
             value={formState.userName}
             onChange={inputChange}
           />
-
         </label>
 
         {errorState.userName.length > 0 ? (
@@ -76,9 +94,7 @@ export default function SignInForm(props) {
         ) : null}
 
         <label htmlFor="password">
-
           Password:
-
           <input
             className="signInInput"
             type="password"
@@ -87,7 +103,6 @@ export default function SignInForm(props) {
             value={formState.password}
             onChange={inputChange}
           />
-
         </label>
 
         {errorState.password.length > 0 ? (
@@ -96,22 +111,12 @@ export default function SignInForm(props) {
 
         <button type="submit">Login</button>
 
-        <p className="newUserLink">New User?
+        <p className="newUserLink">New User? <span
 
-          <span
             className='subLink'
-            onClick={props.registerClick}>
-
-          Click here to get started!
-
-        </span>
-
-        </p>
-
+            onClick={props.registerClick}
+        >Click here to get started!</span></p>
       </form>
-
     </>
-
   );
-
 }

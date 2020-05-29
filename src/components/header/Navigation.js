@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const Navigation = (props) => {
-
+  console.log(props);
   return (
     <>
       <nav>
