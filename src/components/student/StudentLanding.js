@@ -5,7 +5,6 @@ import StudentImage from "../../assets/images/student2.jpg";
 
 export default function StudentLanding(props) {
   console.log(props);
-
   return (
     <Header
       bgImage={StudentImage}
