@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { apiAuth } from "../utils/apiAuth";
+import { apiAuth } from "../../utils/apiAuth";
 import { connect } from "react-redux";
 
 const StudentList = (props) => {

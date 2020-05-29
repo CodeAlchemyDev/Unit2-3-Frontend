@@ -1,24 +1,24 @@
 @font-face {
   font-family: 'gPro';
-  src: url('../css/gProRegular.woff2') format('woff2'), url('../css/gProRegular.woff') format('woff');
+  src: url('../fonts/gProRegular.woff2') format('woff2'), url('../fonts/gProRegular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'gProItalic';
-  src: url('../css/gProItalic.woff2') format('woff2'), url('../css/gProItalic.woff') format('woff');
+  src: url('../fonts/gProItalic.woff2') format('woff2'), url('../fonts/gProItalic.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'proxima_novathin';
-  src: url('../css/proximanovat-thin-webfont.woff2') format('woff2'), url('../css/proximanovat-thin-webfont.woff') format('woff');
+  src: url('../fonts/proximanovat-thin-webfont.woff2') format('woff2'), url('../fonts/proximanovat-thin-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'proxima_novaregular';
-  src: url('../css/proximanova-regular-webfont.woff2') format('woff2'), url('../css/proximanova-regular-webfont.woff') format('woff');
+  src: url('../fonts/proximanova-regular-webfont.woff2') format('woff2'), url('../fonts/proximanova-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
