@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import PrivateRoute from "../PrivateRoute";
 
 const Navigation = (props) => {
+  console.log(props);
   return (
     <>
       <nav>
@@ -13,11 +14,11 @@ const Navigation = (props) => {
         <Link to="volunteer" className="linkSt">
           Volunteers
         </Link>
-        <Link to="/student" className="linkSt">
+        <Link to="/student"
+              className="linkSt"
+              onClick={props.props.signInClick}
+        >
           Students
-        </Link>
-        <Link to="/login" className="linkSt">
-          Login
         </Link>
       </nav>
     </>
