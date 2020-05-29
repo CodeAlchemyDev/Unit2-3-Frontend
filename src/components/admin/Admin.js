@@ -1,57 +1,100 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { connect } from 'react-redux';
+import { createTask, getTasks } from "../../redux/actions/adminActions";
 
 // useState for tasks
 const Task = (props) => {
-	const [task, setTask] = useState({
-		Task: {
-			Name: "",
-            Date: "",
-            Time: "",
-		},
-    })
+    console.log("THESE ARE MY PROPS: ", props)
+    const [task, setTask] = useState({
+        name: "",
+        description: "",
+        date: new Date(),
+})
+        // {
+        // "task_id": 16,
+        // "task_name": "Zoom Session",
+        // "created_by": 2,
+        // "assigned_to": 1,
+        // "description": "Prepare the PVD and DB Schema",
+        // "due_date": "",
+        // "completed": 1
+        // },
+
+useEffect(() => {
+    props.getTasks()
+},[props.getTasks])
+
 
 
 // handleChange
 const handleChange = (e) => {
     setTask({
-        Task: {
-            ...task.Task,
-            [e.target.name]: e.target.value,
-        },
+        ...task, 
+        [e.target.name] : e.target.value
     });
+}
+const handleDate = date => {
+    setTask({
+        ...task,
+        date: date
+    })
 };
+const handleTask = () => {
+    const newTask = {
+        ...task,
+        date: `${task.date}`,
+        assigned_to: 1,
+        created_by: 2,
+    }
+    props.createTask(newTask)
+    setTask({        
+    name: "",
+    description: "",
+    date: new Date(),})
+}
 
 return (
     // MY BUILT OUT LOGIN FORM
+    <>
     <div className="registerForm">
         <form>
+            <label htmlFor="name" />
             <input className="myinput"
+                id="name"
                 type="text"
-                name="Name"
+                name="name"
                 placeholder="John Smith"
-                value={task.Task.Name}
+                value={task.name}
                 onChange={handleChange}
             />
+            <label htmlFor="description" />
             <input className="myinput"
-                type="date"
-                name="Date"
-                placeholder="01/01/2021"
-                value={task.Task.Date}
+                id="description"
+                type="text"
+                name="description"
+                placeholder="A very important task"
+                value={task.description}
                 onChange={handleChange}
             />
-            <input className="myinput"
-                type="time"
-                name="Time"
-                placeholder="09:00"
-                value={task.Task.Time}
-                onChange={handleChange}
-                min="06:00"
-                max="24:00" 
-                required 
-            />
+            <DatePicker
+                selected={task.date}
+                onChange={handleDate}
+             />
         </form>
+        <button onClick={handleTask}>Create New Task</button>
+
     </div>
+    <div>
+    {props.data.map(data => <div key={data.id}>{data.task_name}</div>)}
+    </div>
+    </>
 );  
 };
-
-export default Task;
+const mapStateToProps = state => {
+    return {
+        data: state.dataReducer.data
+    }
+}
+export default connect(mapStateToProps, {createTask, getTasks})(Task);

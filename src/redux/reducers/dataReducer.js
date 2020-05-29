@@ -5,6 +5,11 @@ import {
   GET_DATA_SUCCESS,
 } from "../actions/index";
 
+import {
+  GET_TASKS_START,
+  GET_TASKS,
+} from "../actions/adminActions";
+
 const initialState = {
   data: [],
   isLoading: false,
@@ -32,9 +37,22 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        data: [...state.data, action.payload],
+        data: action.payload,
         error: "",
       };
+    case GET_TASKS:
+        return {
+          ...state,
+          isLoading: false,
+          data: action.payload,
+          error: "",
+        };
+    case GET_TASKS_START:
+    return {
+      ...state,
+      isLoading: true,
+      error: "",
+    };
     case GET_DATA_FAIL:
       return {
         ...state,
