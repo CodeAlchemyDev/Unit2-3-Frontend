@@ -59,16 +59,22 @@ function App(props) {
                 <SignInForm
                     registerClick={registerClick}
                     registerState={registerState}
+                    setRegisterState={setRegisterState}
                     signInState={signInState}
-
+                    setSignInState={setSignInState}
+                    bodyClicker={bodyClicker}
+                    signInClick={signInClick}
                 />
             :
                 registerState ?
                     <Register
                         registerClick={registerClick}
                         registerState={registerState}
+                        setRegisterState={setRegisterState}
                         signInState={signInState}
                         setSignInState={setSignInState}
+                        bodyClicker={bodyClicker}
+                        signInClick={signInClick}
                         />
 
                         :
