@@ -12,7 +12,7 @@ const initialState = {
 };
 
 // Reducer needs Action & Copy of Current State
-export const rootReducer = (state = initialState, action) => {
+const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DATA_START:
       return {
@@ -37,3 +37,5 @@ export const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default dataReducer;

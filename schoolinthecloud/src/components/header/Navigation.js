@@ -1,7 +1,6 @@
 // Dependancies
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import PrivateRoute from "../PrivateRoute";
 
 const Navigation = (props) => {
   console.log(props);

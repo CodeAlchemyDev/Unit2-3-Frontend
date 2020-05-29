@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import "./assets/styles/css/index.css";
 import Header from "./components/header/Header";
+import StudentList from "./components/StudentList";
 import Student from "./components/Student";
 import SignInForm from "./components/forms/SignInForm";
 import Volunteer from "./components/Volunteer";
@@ -51,7 +52,15 @@ function App(props) {
                 signInClick={signInClick}/>
         <Switch>
           <Route exact path="/" />
-          <PrivateRoute path="/student" component={Student} props={props} />
+          <PrivateRoute
+            path="/students"
+            component={StudentList}
+            props={props}
+          />
+          <Route
+            path="/student/:id"
+            render={(props) => <Student {...props} id={props.id} />}
+          />
           <PrivateRoute path="/volunteer" component={Volunteer} props={props} />
           <Route exact path="/login">
 

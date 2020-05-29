@@ -15,7 +15,7 @@ const initialState = {
 };
 
 // Reducer needs Action & Copy of Current State
-export const studentReducer = (state = initialState, action) => {
+const studentReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_STUDENT_DATA_START:
       return {
@@ -55,3 +55,5 @@ export const studentReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default studentReducer;
