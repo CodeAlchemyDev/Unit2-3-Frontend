@@ -10,7 +10,9 @@ import Register from "./components/forms/Register";
 import StudentLanding from "./components/student/StudentLanding";
 import StudentImage from "./assets/images/student.jpg";
 import Footer from "./components/Footer/footer";
-import VolunteerLanding from "./components/volunteer/VolunteerLanding";
+
+import Admin from "./components/admin/Admin";
+
 
 function App(props) {
   const [signInState, setSignInState] = useState(false);
@@ -165,60 +167,19 @@ function App(props) {
                   registerClick={registerClick}
               />
 
-              {signInState ? (
-                  <SignInForm
-                      registerClick={registerClick}
-                      registerState={registerState}
-                      setRegisterState={setRegisterState}
-                      signInState={signInState}
-                      setSignInState={setSignInState}
-                      bodyClicker={bodyClicker}
-                      signInClick={signInClick}
-                  />
-              ) : registerState ? (
-                  <Register
-                      registerClick={registerClick}
-                      registerState={registerState}
-                      setRegisterState={setRegisterState}
-                      signInState={signInState}
-                      setSignInState={setSignInState}
-                      bodyClicker={bodyClicker}
-                      signInClick={signInClick}
-                  />
-              ) : (
-                  <></>
-              )}
+            ) : (
+              <></>
+            )}
+          </Route>
 
-            </Route>
+          <Route 
+            path="/admin">
+            <Admin />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
 
-            <Route exact path="/login">
-              {signInState ? (
-                  <SignInForm
-                      registerClick={registerClick}
-                      registerState={registerState}
-                      setRegisterState={setRegisterState}
-                      signInState={signInState}
-                      setSignInState={setSignInState}
-                      bodyClicker={bodyClicker}
-                      signInClick={signInClick}
-                  />
-              ) : registerState ? (
-                  <Register
-                      registerClick={registerClick}
-                      registerState={registerState}
-                      setRegisterState={setRegisterState}
-                      signInState={signInState}
-                      setSignInState={setSignInState}
-                      bodyClicker={bodyClicker}
-                      signInClick={signInClick}
-                  />
-              ) : (
-                  <></>
-              )}
-            </Route>
-          </Switch>
-        </Router>
-      </div>
   );
 }
 
