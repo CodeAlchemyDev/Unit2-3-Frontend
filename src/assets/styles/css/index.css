@@ -154,7 +154,6 @@ header .headliner .subTitler {
   letter-spacing: 2px;
   color: #24c2d7;
   text-align: center;
-  margin-left: 3px;
 }
 .signInForm .newUserLink .subLink:hover {
   cursor: pointer;
@@ -203,26 +202,6 @@ header .headliner .subTitler {
   width: 324px;
   text-align: left;
   margin: 0 auto;
-}
-.registerForm .currentUserLink {
-  width: 100%;
-  font-family: "gPro";
-  letter-spacing: 2px;
-  color: black;
-  font-size: 17px;
-  margin: 30px auto 0px auto;
-  text-align: center;
-}
-.registerForm .currentUserLink .subLink {
-  font-famiy: 'gPro';
-  font-size: 17px;
-  letter-spacing: 2px;
-  color: #24c2d7;
-  margin-left: 3px;
-  text-align: center;
-}
-.registerForm .currentUserLink .subLink:hover {
-  cursor: pointer;
 }
 .Form {
   width: 800px;
