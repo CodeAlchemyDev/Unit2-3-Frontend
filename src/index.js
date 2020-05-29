@@ -1,27 +1,13 @@
-// Styles
-import "./assets/styles/css/index.css";
-
-// Dependancies
 import React from "react";
-import ReactDOM from "react-dom";
-import store from "./redux/store";
-import { Provider } from "react-redux";
+import { render } from "react-dom";
 import { createStore, applyMiddleware } from "redux";
+// import store from "./redux/store";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
+import rootReducer from "./redux/reducers/rootReducer";
+import Root from "./components/Root";
+import "./assets/styles/css/index.css";
 
-// Components
-import App from "./App";
-import { rootReducer } from "./redux/reducers/rootReducer";
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
-const root = document.querySelector("#root");
-// const store = createStore(rootReducer, applyMiddleware(thunk, logger));
-
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  root
-);
+render(<Root store={store} />, document.getElementById("root"));

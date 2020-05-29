@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
 import VolunteerTaskList from "./VolunteerTaskList";
-import { apiAuth } from "../../utils/apiAuth";
 import { getVolunteerData } from "../../redux/actions/volunteerActions";
 
 const VolunteerDBoard = styled.div`
@@ -25,18 +24,18 @@ const VolunteerDBoard = styled.div`
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 `;
 
-export default function VolunteerDashboard() {
+export default function VolunteerDashboard(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getVolunteerData());
   }, [dispatch]);
 
-  const tasks = useSelector((state) => state.volunteers.taskList);
+  console.log(props);
   return (
     <VolunteerDBoard>
       <h1> Welcome to Volunteer Dashboard! </h1>
-      <VolunteerTaskList tasks={tasks} />
+      {/* <VolunteerTaskList tasks={tasks} /> */}
     </VolunteerDBoard>
   );
 }

@@ -4,7 +4,7 @@ const initialState = {
   taskList: [],
 };
 
-export default function volunteerReducer(state, action) {
+export default function volunteerReducer(state = initialState, action) {
   if (!state.volunteers) {
     state = {
       ...state,
@@ -16,10 +16,9 @@ export default function volunteerReducer(state, action) {
     case GET_VOLUNTEER_DATA_SUCCESS:
       return {
         ...state,
-        volunteers: {
-          ...state.volunteers,
-          taskList: action.payload,
-        },
+        isLoading: false,
+        taskList: action.payload,
+        error: "",
       };
 
     default:

@@ -2,7 +2,6 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { createNewStudent } from "../../redux/actions/studentActions";
 import EyeGrabber from "../EyeGrabber";
 import TopNav from "./TopNav";
 
@@ -34,4 +33,4 @@ const mapStateToProps = (state) => {
     data: state.data,
   };
 };
-export default connect(mapStateToProps, { createNewStudent })(Header);
+export default connect(mapStateToProps, {})(Header);

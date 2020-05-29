@@ -3,7 +3,7 @@ import { apiAuth } from "../../utils/apiAuth";
 import { connect } from "react-redux";
 
 const StudentList = (props) => {
-  const [students, setStudents] = useState([]);
+  const [volunteers, setVolunteers] = useState([]);
 
   // TODO: Change Endpoint to Proper Data
 
@@ -12,18 +12,18 @@ const StudentList = (props) => {
       .get("/student/view")
       .then((res) => {
         console.log(res);
-        setStudents(res.data);
+        setVolunteers(res.data);
       })
-      .catch((err) => console.log(err, "Can't locate any students"));
+      .catch((err) => console.log(err, "Can't locate any volunteers"));
   }, []);
 
   return (
     <>
       <div>
-        {students.map((student) => {
+        {volunteers.map((volunteer) => {
           return (
-            <li key={student.id}>
-              {`${student.firstName} ${student.lastName}`}
+            <li key={volunteer.id}>
+              {`${volunteer.firstName} ${volunteer.lastName}`}
             </li>
           );
         })}
