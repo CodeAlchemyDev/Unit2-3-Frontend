@@ -24,6 +24,11 @@ header .topNav .leftNav {
   height: 100%;
   margin-left: 3%;
 }
+header .topNav .leftNav .logo {
+  margin: auto 0 auto 10px;
+  height: 40px;
+  width: 50px;
+}
 header .topNav .leftNav .textStyler {
   font-size: 20px;
   height: 100%;
@@ -58,7 +63,7 @@ header .headliner {
   justify-content: center;
 }
 header .headliner .titler {
-  margin: auto auto 0 auto;
+  margin: auto auto 0;
   font-size: 40px;
   font-family: "proxima_novaregular";
   color: #fff;
@@ -71,6 +76,28 @@ header .headliner .subTitler {
   text-align: center;
   color: #fff;
   font-weight: 400;
+}
+header .headliner button {
+  width: 150px;
+  display: inline-block;
+  padding: 8px 11px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: 0px none;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: currentcolor none medium;
+  background-color: #00aced;
+  background-image: linear-gradient(to right, #4dd0e1, #1ee7e2);
+  color: black;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
+  margin: 10px auto;
+}
+header .headliner button:hover {
+  background-image: none;
+  background-color: #4dd0e1;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 12px;
 }
 .linkSt {
   display: flex;
@@ -91,25 +118,25 @@ header .headliner .subTitler {
 }
 @font-face {
   font-family: 'gPro';
-  src: url('../css/gProRegular.woff2') format('woff2'), url('../css/gProRegular.woff') format('woff');
+  src: url('../fonts/gProRegular.woff2') format('woff2'), url('../fonts/gProRegular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'gProItalic';
-  src: url('../css/gProItalic.woff2') format('woff2'), url('../css/gProItalic.woff') format('woff');
+  src: url('../fonts/gProItalic.woff2') format('woff2'), url('../fonts/gProItalic.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'proxima_novathin';
-  src: url('../css/proximanovat-thin-webfont.woff2') format('woff2'), url('../css/proximanovat-thin-webfont.woff') format('woff');
+  src: url('../fonts/proximanovat-thin-webfont.woff2') format('woff2'), url('../fonts/proximanovat-thin-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'proxima_novaregular';
-  src: url('../css/proximanova-regular-webfont.woff2') format('woff2'), url('../css/proximanova-regular-webfont.woff') format('woff');
+  src: url('../fonts/proximanova-regular-webfont.woff2') format('woff2'), url('../fonts/proximanova-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
