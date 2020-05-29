@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Header from "../header/Header";
 import StudentImage from "../../assets/images/student2.jpg";
 
 export default function StudentLanding(props) {
   console.log(props);
+
   return (
     <Header
       bgImage={StudentImage}
