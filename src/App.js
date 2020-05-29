@@ -9,7 +9,8 @@ import Volunteer from "./components/volunteer/Volunteer";
 import Register from "./components/forms/Register";
 import StudentLanding from "./components/student/StudentLanding";
 import StudentImage from "./assets/images/student.jpg";
-import Footer from "./components/footer/Footer";
+import Footer from "./components/Footer/Footer";
+import VolunteerLanding from "./components/volunteer/VolunteerLanding";
 
 function App(props) {
   const [signInState, setSignInState] = useState(false);
@@ -146,7 +147,49 @@ function App(props) {
             render={(props) => <Student {...props} id={props.id} />}
           />
 
-          <Route path="/volunteer" component={Volunteer} props={props} />
+          <Route path="/volunteer" >
+
+            <VolunteerLanding
+                registerClick={registerClick}
+                registerState={registerState}
+                setRegisterState={setRegisterState}
+                signInState={signInState}
+                setSignInState={setSignInState}
+                bodyClicker={bodyClicker}
+                signInClick={signInClick}
+            />
+
+            <Footer
+                bodyClicker={bodyClicker}
+                signInClick={signInClick}
+                registerClick={registerClick}
+            />
+
+            {signInState ? (
+                <SignInForm
+                    registerClick={registerClick}
+                    registerState={registerState}
+                    setRegisterState={setRegisterState}
+                    signInState={signInState}
+                    setSignInState={setSignInState}
+                    bodyClicker={bodyClicker}
+                    signInClick={signInClick}
+                />
+            ) : registerState ? (
+                <Register
+                    registerClick={registerClick}
+                    registerState={registerState}
+                    setRegisterState={setRegisterState}
+                    signInState={signInState}
+                    setSignInState={setSignInState}
+                    bodyClicker={bodyClicker}
+                    signInClick={signInClick}
+                />
+            ) : (
+                <></>
+            )}
+
+          </Route>
 
           <Route exact path="/login">
             {signInState ? (
