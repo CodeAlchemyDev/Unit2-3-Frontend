@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0e534610-eae3-4979-883f-8b0581f7ca60/deploy-status)](https://app.netlify.com/sites/schoolinthecloud/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
