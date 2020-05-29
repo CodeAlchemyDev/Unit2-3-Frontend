@@ -56,7 +56,23 @@ const CheckboxLabel = styled.label`
 	justify-content: center;
 	align-items: baseline;
 `;
-
+const VolunteerForm = styled.div`
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 80wv;
+	height: 80vh;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	opacity: 0.9;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+`;
 export default function Volunteer() {
 	const [ formState, changeHandler ] = useForm({
 		name: '',
@@ -65,7 +81,7 @@ export default function Volunteer() {
 		location: '',
 		availability: '',
 		bio: '',
-		term: false
+		terms: false
 	});
 
 	//const [ token, setToken ] = useAuthToken();
@@ -74,17 +90,12 @@ export default function Volunteer() {
 	const submitHandler = async (event) => {
 		event.preventDefault();
 		console.log(formState);
-		// making a request to server for login, sending formState contain username and password to server
-		// await : make promise to resolve first then continue
 		const response = await axios.post('https://build-week-school-in-the-cloud.herokuapp.com/api', formState);
 		console.log(response.data);
-
-		//setToken(response.data.payload);
-		//props.history.push('/bubbles');
 	};
 
 	return (
-		<div className="volunteer">
+		<VolunteerForm>
 			<h1> Hello Volunteer! Please enter your information</h1>
 
 			<Form onSubmit={submitHandler}>
@@ -127,40 +138,31 @@ export default function Volunteer() {
 				</InputWrapper>
 				<InputWrapper>
 					<Label htmlFor="availability">Availability: </Label>
-					<Input
-						type="text"
+					<select
 						name="availability"
 						id="availability"
-						required
-						value={formState.availability}
 						onChange={changeHandler}
-					/>
+						value={formState.availability}
+					>
+						<option value="6am">6:00AM - 9:00AM</option>
+						<option value="9am">9:00AM - 12:00PM</option>
+						<option value="12pm">12:00PM - 3:00PM</option>
+						<option value="3pm">3:00PM - 6:00PM</option>
+						<option value="6pm">6:00PM - 9:00PM</option>
+					</select>
 				</InputWrapper>
 				<InputWrapper>
 					<Label htmlFor="bio">Bio: </Label>
 					<Input type="text" name="bio" id="bio" required value={formState.bio} onChange={changeHandler} />
 				</InputWrapper>
-				<InputWrapper>
-					<Label>
-						<input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-					</Label>
-					<Input
-						type="text"
-						name="term"
-						id="term"
-						placeholder="Term and Condiditon Agreement..."
-						readonly
-						value={formState.term}
-						onChange={changeHandler}
-					/>
-				</InputWrapper>
+
 				<InputWrapper>
 					<CheckboxLabel>
 						<input
 							type="checkbox"
-							name="term"
-							id="term"
-							checked={formState.term}
+							name="terms"
+							id="terms"
+							checked={formState.terms}
 							onChange={changeHandler}
 						/>
 						I agree to the terms and conditions.
@@ -175,6 +177,6 @@ export default function Volunteer() {
 					</Button>
 				</ButtonWrapper>
 			</Form>
-		</div>
+		</VolunteerForm>
 	);
 }

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import * as yup from 'yup';
-import axios from 'axios';
 
 // Styled components
 import Button from '../buttons/Buttons';
 import Form from '../styled/Form';
+import {apiAuth} from '../../utils/apiAuth'
 
 export default function Register(props) {
 	const [formState, setFormState] = useState({selector: '',
@@ -28,21 +28,47 @@ export default function Register(props) {
 		time: '',
 		terms: false,});
 
+
 	//Used to test field validation with taken username values from backend.
 	const testerFieldForUsernameAvailability = ['thisss', 'isaaa', 'tester'];
 
 	// set up yup validation
 	const formSchema_Student = yup.object().shape({
-		selector: '',
-		userName: '',
-		password: '',
-		nameFirst: '',
-		nameLast: '',
-		email: '',
-		phone: '',
-		address: '',
-		time: '',
-		terms: false,
+		selector: yup
+			.string(),
+		userName: yup
+			.string()
+			.required("Username is required")
+			.min(4, "Username must be longer than 4 characters"),
+		password: yup
+			.string()
+			.required("Please enter a password")
+			.min(3,"Password must be longer than 3 characters"),
+		nameFirst: yup
+			.string()
+			.required("Please enter your first name"),
+		nameLast: yup
+			.string()
+			.required("Please enter your last name"),
+		email: yup
+			.string()
+			.email("Please enter a valid email address")
+			.required("Email address required"),
+		phone: yup
+			.number()
+			.typeError("Please enter a valid phone number")
+			.required()
+			.min(10,"Please enter a valid phone number with area code first"),
+		address: yup
+			.string()
+			.required('Please enter your address'),
+		time: yup
+			.string()
+			.required("Please select a time slot"),
+		terms: yup
+			.bool()
+			.required("Please confirm our terms and conditions")
+			.oneOf([true],"Please agree to our terms and conditions")
 	});
 
 	// validation on input change
@@ -64,11 +90,12 @@ export default function Register(props) {
 	};
 
 	const formSubmit = (e) => {
+		const axios = apiAuth();
 		e.preventDefault();
 		// If volunteer is selected post to volunteer api else submit to student api
 		formState.selector === 'volunteer'
 			? axios
-					.post('')
+					.post('volunteer')
 					.then((response) => {
 						console.log(response);
 					})
