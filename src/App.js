@@ -1,7 +1,10 @@
+// Dependancies
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import "./assets/styles/css/index.css";
+
+// Components
 import Header from "./components/header/Header";
 import StudentList from "./components/StudentList";
 import Student from "./components/Student";
@@ -10,7 +13,6 @@ import Volunteer from "./components/Volunteer";
 import Register from "./components/forms/Register";
 
 function App(props) {
-
   const [signInState, setSignInState] = useState(true);
   const [registerState, setRegisterState] = useState(false);
 
@@ -18,10 +20,10 @@ function App(props) {
   const bodyClicker = (e) => {
     console.log("bodyClicked");
     return e.target.className === "headliner" && signInState && !registerState
-        ? setSignInState(!signInState)
-        : e.target.className === "headliner" && registerState && !signInState
-            ? setRegisterState(!registerState)
-            : null;
+      ? setSignInState(!signInState)
+      : e.target.className === "headliner" && registerState && !signInState
+      ? setRegisterState(!registerState)
+      : null;
   };
 
   console.log(signInState);
@@ -34,64 +36,49 @@ function App(props) {
 
   // Shows the register window and ensures the signin state is set to false
   const registerClick = (e) => {
-    console.log('register clicked')
+    console.log("register clicked");
     setSignInState(false);
     setRegisterState(!registerState);
   };
 
-
   return (
     <div className="App">
       <Router>
-        <Header registerClick={registerClick}
-                registerState={registerState}
-                setRegisterState={setRegisterState}
-                signInState={signInState}
-                setSignInState={setSignInState}
-                bodyClicker={bodyClicker}
-                signInClick={signInClick}/>
+        <Header
+          registerClick={registerClick}
+          registerState={registerState}
+          setRegisterState={setRegisterState}
+          signInState={signInState}
+          setSignInState={setSignInState}
+          bodyClicker={bodyClicker}
+          signInClick={signInClick}
+        />
         <Switch>
           <Route exact path="/" />
-          <PrivateRoute
-            path="/students"
-            component={StudentList}
-            props={props}
-          />
+          <Route path="/students" component={StudentList} props={props} />
           <Route
             path="/student/:id"
             render={(props) => <Student {...props} id={props.id} />}
           />
           <PrivateRoute path="/volunteer" component={Volunteer} props={props} />
           <Route exact path="/login">
-
-            {signInState ?
-                <SignInForm
-                    registerClick={registerClick}
-                    registerState={registerState}
-                    signInState={signInState}
-
-                />
-            :
-                registerState ?
-                    <Register
-                        registerClick={registerClick}
-                        registerState={registerState}
-                        signInState={signInState}
-                        setSignInState={setSignInState}
-                        />
-
-                        :
-                    <></>
-            }
-
-
-          </Route>
-          {/* <Route
-            path="/movies/:id"
-            render={(props) => (
-              <Register {...props} saveToList={addToSavedList} />
+            {signInState ? (
+              <SignInForm
+                registerClick={registerClick}
+                registerState={registerState}
+                signInState={signInState}
+              />
+            ) : registerState ? (
+              <Register
+                registerClick={registerClick}
+                registerState={registerState}
+                signInState={signInState}
+                setSignInState={setSignInState}
+              />
+            ) : (
+              <></>
             )}
-          /> */}
+          </Route>
         </Switch>
       </Router>
     </div>
