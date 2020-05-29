@@ -10,7 +10,7 @@ import Register from "./components/forms/Register";
 import StudentLanding from "./components/student/StudentLanding";
 import StudentImage from "./assets/images/student.jpg";
 import Footer from "./components/Footer/footer";
-
+import VolunteerLanding from "./components/volunteer/VolunteerLanding.js";
 import Admin from "./components/admin/Admin";
 
 
