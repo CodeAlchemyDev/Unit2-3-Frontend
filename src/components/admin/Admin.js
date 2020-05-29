@@ -34,7 +34,7 @@ const handleChange = (e) => {
         ...task, 
         [e.target.name] : e.target.value
     });
-}
+};
 const handleDate = date => {
     setTask({
         ...task,
@@ -94,7 +94,7 @@ return (
 };
 const mapStateToProps = state => {
     return {
-        data: state.dataReducer.data
+        data: state.adminReducer.data
     }
 }
 export default connect(mapStateToProps, {createTask, getTasks})(Task);
