@@ -13,9 +13,9 @@ const Navigation = (props) => {
         <Link to="volunteer" className="linkSt">
           Volunteers
         </Link>
-        <Link to="/student"
+        <Link to="/test"
               className="linkSt"
-              onClick={props.props.signInClick}
+              onClick={props.props.props.signInClick}
         >
           Students
         </Link>
