@@ -1,0 +1,26 @@
+{
+  "users:" [
+    {
+        "id:" 1,
+        "username:" "",
+        "firstName:" "",
+        "lastName:" "",
+        "age:" "",
+        "type:" "",
+        "phone:" num,
+        "address:" {
+            "number:" num,
+            "street:" "",
+            "city:" "",
+            "zip:" num,
+            "country:" "" ,
+        }
+  ],
+    "tasklist:" [
+    { "id:" 1, "title:" "", "tasks:" [] }
+  ],
+  "tasks:" [
+    { "id:" 1, "name:" "", "description:" "", date: "" }
+  ],
+  "profile:" { "name:" "typicode" }
+}
