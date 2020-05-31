@@ -13,12 +13,12 @@ export default function Footer(props) {
             <h4 className="footerLink" onClick={props.registerClick}>
                 register
             </h4>
-            <h4 className="footerLink">admin</h4>
-            <h4 className="footerLink">student</h4>
-            <h4 className="footerLink">volunteer</h4>
-            <Link to="/login" className="footerLink" onClick={props.signInClick}>
+            <Link to="/admin" className="footerLink">admin</Link>
+            <Link to="/students" className="footerLink">student</Link>
+            <Link to="/volunteer" className="footerLink">volunteer</Link>
+            <h4 className="footerLink" onClick={props.signInClick}>
                 login
-            </Link>
+            </h4>
 
             <div className="footerCopyright">&#xA9;2020</div>
         </footer>
