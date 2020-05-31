@@ -65,7 +65,7 @@ export default function Register(props) {
     // If volunteer is selected post to volunteer api else submit to student api
     formState.selector === "volunteer"
       ? axios
-          .post("volunteer")
+          .post("volunteers")
           .then((response) => {
             console.log(response);
           })
@@ -73,7 +73,8 @@ export default function Register(props) {
             console.log(err);
           })
       : axios
-          .post("")
+            //shows predefined list from backend. Would post here if possible.
+          .get("students/list")
           .then((response) => {
             console.log(response);
           })
