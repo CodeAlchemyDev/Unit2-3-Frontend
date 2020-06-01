@@ -9,13 +9,9 @@ import Volunteer from "./components/volunteer/Volunteer";
 import Register from "./components/forms/Register";
 import StudentLanding from "./components/student/StudentLanding";
 import StudentImage from "./assets/images/student.jpg";
-import Footer from "./components/Footer/footer";
+import Footer from "./components/footer/Footer";
 import VolunteerLanding from "./components/volunteer/VolunteerLanding.js";
 import Admin from "./components/admin/Admin";
-
-
-
-
 
 function App(props) {
   const [signInState, setSignInState] = useState(false);
@@ -25,10 +21,10 @@ function App(props) {
   const bodyClicker = (e) => {
     console.log("bodyClicked");
     return e.target.className === "headliner" && signInState && !registerState
-        ? setSignInState(!signInState)
-        : e.target.className === "headliner" && registerState && !signInState
-            ? setRegisterState(!registerState)
-            : null;
+      ? setSignInState(!signInState)
+      : e.target.className === "headliner" && registerState && !signInState
+      ? setRegisterState(!registerState)
+      : null;
   };
 
   // Shows the signin window and ensures the register state is set to false
@@ -40,7 +36,7 @@ function App(props) {
   // Shows the register window and ensures the signin state is set to false
   const registerClick = (e) => {
     console.log(
-        `signin state is ${signInState} and register state is ${registerState}`
+      `signin state is ${signInState} and register state is ${registerState}`
     );
     console.log("register clicked");
     setSignInState(false);
@@ -48,161 +44,158 @@ function App(props) {
   };
 
   return (
-      <div className="App">
-        <Router>
-          {/*<Header registerClick={registerClick}*/}
-          {/*        registerState={registerState}*/}
-          {/*        setRegisterState={setRegisterState}*/}
-          {/*        signInState={signInState}*/}
-          {/*        setSignInState={setSignInState}*/}
-          {/*        bodyClicker={bodyClicker}*/}
-          {/*        signInClick={signInClick}/>*/}
-          <Switch>
-            <Route exact path="/">
-              <Header
-                  bgImage={StudentImage}
-                  registerClick={registerClick}
-                  registerState={registerState}
-                  setRegisterState={setRegisterState}
-                  signInState={signInState}
-                  setSignInState={setSignInState}
-                  bodyClicker={bodyClicker}
-                  signInClick={signInClick}
-                  title="Educational Mentoring Service for children who need it most"
-                  subTitle="Our hope is to lighten the burden of overworked teachers and parents"
-                  buttonText="Get Started!"
-              />
-              <Footer
-                  bodyClicker={bodyClicker}
-                  signInClick={signInClick}
-                  registerClick={registerClick}
-              />
-
-              {signInState ? (
-                  <SignInForm
-                      registerClick={registerClick}
-                      registerState={registerState}
-                      setRegisterState={setRegisterState}
-                      signInState={signInState}
-                      setSignInState={setSignInState}
-                      bodyClicker={bodyClicker}
-                      signInClick={signInClick}
-                  />
-              ) : registerState ? (
-                  <Register
-                      registerClick={registerClick}
-                      registerState={registerState}
-                      setRegisterState={setRegisterState}
-                      signInState={signInState}
-                      setSignInState={setSignInState}
-                      bodyClicker={bodyClicker}
-                      signInClick={signInClick}
-                  />
-              ) : (
-                  <></>
-              )}
-            </Route>
-
-            <PrivateRoute path="/student/:id" />
-
-            <Route path="/students">
-              <StudentLanding
-                  registerClick={registerClick}
-                  registerState={registerState}
-                  setRegisterState={setRegisterState}
-                  signInState={signInState}
-                  setSignInState={setSignInState}
-                  bodyClicker={bodyClicker}
-                  signInClick={signInClick}
-              />
-
-              <Footer
-                  bodyClicker={bodyClicker}
-                  signInClick={signInClick}
-                  registerClick={registerClick}
-              />
-
-              {signInState ? (
-                  <SignInForm
-                      registerClick={registerClick}
-                      registerState={registerState}
-                      setRegisterState={setRegisterState}
-                      signInState={signInState}
-                      setSignInState={setSignInState}
-                      bodyClicker={bodyClicker}
-                      signInClick={signInClick}
-                  />
-              ) : registerState ? (
-                  <Register
-                      registerClick={registerClick}
-                      registerState={registerState}
-                      setRegisterState={setRegisterState}
-                      signInState={signInState}
-                      setSignInState={setSignInState}
-                      bodyClicker={bodyClicker}
-                      signInClick={signInClick}
-                  />
-              ) : (
-                  <></>
-              )}
-            </Route>
-
-            <Route
-                path="/student/:id"
-                render={(props) => <Student {...props} id={props.id} />}
+    <div className="App">
+      <Router>
+        {/*<Header registerClick={registerClick}*/}
+        {/*        registerState={registerState}*/}
+        {/*        setRegisterState={setRegisterState}*/}
+        {/*        signInState={signInState}*/}
+        {/*        setSignInState={setSignInState}*/}
+        {/*        bodyClicker={bodyClicker}*/}
+        {/*        signInClick={signInClick}/>*/}
+        <Switch>
+          <Route exact path="/">
+            <Header
+              bgImage={StudentImage}
+              registerClick={registerClick}
+              registerState={registerState}
+              setRegisterState={setRegisterState}
+              signInState={signInState}
+              setSignInState={setSignInState}
+              bodyClicker={bodyClicker}
+              signInClick={signInClick}
+              title="Educational Mentoring Service for children who need it most"
+              subTitle="Our hope is to lighten the burden of overworked teachers and parents"
+              buttonText="Get Started!"
+            />
+            <Footer
+              bodyClicker={bodyClicker}
+              signInClick={signInClick}
+              registerClick={registerClick}
             />
 
-            <Route path="/volunteer" >
-
-              <VolunteerLanding
-                  registerClick={registerClick}
-                  registerState={registerState}
-                  setRegisterState={setRegisterState}
-                  signInState={signInState}
-                  setSignInState={setSignInState}
-                  bodyClicker={bodyClicker}
-                  signInClick={signInClick}
+            {signInState ? (
+              <SignInForm
+                registerClick={registerClick}
+                registerState={registerState}
+                setRegisterState={setRegisterState}
+                signInState={signInState}
+                setSignInState={setSignInState}
+                bodyClicker={bodyClicker}
+                signInClick={signInClick}
               />
-
-              <Footer
-                  bodyClicker={bodyClicker}
-                  signInClick={signInClick}
-                  registerClick={registerClick}
+            ) : registerState ? (
+              <Register
+                registerClick={registerClick}
+                registerState={registerState}
+                setRegisterState={setRegisterState}
+                signInState={signInState}
+                setSignInState={setSignInState}
+                bodyClicker={bodyClicker}
+                signInClick={signInClick}
               />
-
-              {signInState ? (
-                  <SignInForm
-                      registerClick={registerClick}
-                      registerState={registerState}
-                      setRegisterState={setRegisterState}
-                      signInState={signInState}
-                      setSignInState={setSignInState}
-                      bodyClicker={bodyClicker}
-                      signInClick={signInClick}
-                  />
-              ) : registerState ? (
-                  <Register
-                      registerClick={registerClick}
-                      registerState={registerState}
-                      setRegisterState={setRegisterState}
-                      signInState={signInState}
-                      setSignInState={setSignInState}
-                      bodyClicker={bodyClicker}
-                      signInClick={signInClick}
-                  />
-              ) : (
-                  <></>
-              )}
+            ) : (
+              <></>
+            )}
           </Route>
 
-          <Route 
-            path="/admin">
+          <PrivateRoute path="/student/:id" />
+
+          <Route path="/students">
+            <StudentLanding
+              registerClick={registerClick}
+              registerState={registerState}
+              setRegisterState={setRegisterState}
+              signInState={signInState}
+              setSignInState={setSignInState}
+              bodyClicker={bodyClicker}
+              signInClick={signInClick}
+            />
+
+            <Footer
+              bodyClicker={bodyClicker}
+              signInClick={signInClick}
+              registerClick={registerClick}
+            />
+
+            {signInState ? (
+              <SignInForm
+                registerClick={registerClick}
+                registerState={registerState}
+                setRegisterState={setRegisterState}
+                signInState={signInState}
+                setSignInState={setSignInState}
+                bodyClicker={bodyClicker}
+                signInClick={signInClick}
+              />
+            ) : registerState ? (
+              <Register
+                registerClick={registerClick}
+                registerState={registerState}
+                setRegisterState={setRegisterState}
+                signInState={signInState}
+                setSignInState={setSignInState}
+                bodyClicker={bodyClicker}
+                signInClick={signInClick}
+              />
+            ) : (
+              <></>
+            )}
+          </Route>
+
+          <Route
+            path="/student/:id"
+            render={(props) => <Student {...props} id={props.id} />}
+          />
+
+          <Route path="/volunteer">
+            <VolunteerLanding
+              registerClick={registerClick}
+              registerState={registerState}
+              setRegisterState={setRegisterState}
+              signInState={signInState}
+              setSignInState={setSignInState}
+              bodyClicker={bodyClicker}
+              signInClick={signInClick}
+            />
+
+            <Footer
+              bodyClicker={bodyClicker}
+              signInClick={signInClick}
+              registerClick={registerClick}
+            />
+
+            {signInState ? (
+              <SignInForm
+                registerClick={registerClick}
+                registerState={registerState}
+                setRegisterState={setRegisterState}
+                signInState={signInState}
+                setSignInState={setSignInState}
+                bodyClicker={bodyClicker}
+                signInClick={signInClick}
+              />
+            ) : registerState ? (
+              <Register
+                registerClick={registerClick}
+                registerState={registerState}
+                setRegisterState={setRegisterState}
+                signInState={signInState}
+                setSignInState={setSignInState}
+                bodyClicker={bodyClicker}
+                signInClick={signInClick}
+              />
+            ) : (
+              <></>
+            )}
+          </Route>
+
+          <Route path="/admin">
             <Admin />
           </Route>
         </Switch>
       </Router>
     </div>
-
   );
 }
 

@@ -9,6 +9,12 @@ const Navigation = (props) => {
         <Link to="/" className="linkSt">
           Home
         </Link>
+        <Link
+          to="https://ngriffith29.github.io/bwww/index.html"
+          className="linkSt"
+        >
+          About Us
+        </Link>
         <Link to="/volunteer" className="linkSt">
           Volunteers
         </Link>
