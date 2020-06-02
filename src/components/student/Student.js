@@ -1,5 +1,8 @@
 import React from "react";
-import { updateStudent } from "../../redux/actions/studentActions";
+import {
+  updateStudent,
+  deleteStudent,
+} from "../../redux/actions/studentActions";
 import { connect } from "react-redux";
 import { useForm } from "react-hook-form";
 import StudentList from "./StudentList";
@@ -13,45 +16,46 @@ const Student = (props) => {
     e.target.reset();
     props.updateStudent(student);
   };
-  const deleteStudentAccount = (student, e) => {
+  const deleteStudent = (student, e) => {
     console.log("deleted: ", student);
-
     e.preventDefault();
-    props.deleteStudentAccount(student);
+    props.deleteStudent(student);
   };
 
   return (
-    <>
-      <div clasName="student-info">
-        <h2>Your Profile</h2>
-      </div>
+    <div id="student-container">
+      <div className="overlay">
+        <div className="student-info">
+          <h2>Your Profile</h2>
+        </div>
+        <div className="profile-data">
+          <div className="volunteer-list">
+            <StudentList props={props} />
+          </div>
 
-      <div className="volunteer-list">
-        <h3>Choose a Volunteer</h3>
-        <StudentList props={props} />
+          <div className="profile-fields">
+            <h3>Update Your Profile</h3>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <label htmlFor="firstName">First Name</label>
+              <input
+                ref={register}
+                type="text"
+                name="firstName"
+                value={props.firstName}
+              />
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                ref={register}
+                type="text"
+                name="lastName"
+                value={props.lastName}
+              />
+              <button onClick={handleSubmit}>Update Profile</button>
+            </form>
+          </div>
+        </div>
       </div>
-
-      <div className="profile-fields">
-        <h3>Update Your Profile</h3>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="firstName">First Name</label>
-          <input
-            ref={register}
-            type="text"
-            name="firstName"
-            value={props.firstName}
-          />
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            ref={register}
-            type="text"
-            name="lastName"
-            value={props.lastName}
-          />
-          <button onClick={handleSubmit}>Update Profile</button>
-        </form>
-      </div>
-    </>
+    </div>
   );
 };
 const mapStateToProps = (state) => {
@@ -63,4 +67,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   updateStudent,
+  deleteStudent,
 })(Student);

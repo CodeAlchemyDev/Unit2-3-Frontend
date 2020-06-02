@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { apiAuth } from "../../utils/apiAuth";
+import { apiAuth, authHeader } from "../../utils/apiAuth";
 import { connect } from "react-redux";
 
 const StudentList = (props) => {
@@ -19,15 +19,17 @@ const StudentList = (props) => {
 
   return (
     <>
-      <div>
+      <h3>Available Volunteers</h3>
+
+      <ul>
         {volunteers.map((volunteer) => {
           return (
-            <li key={volunteer.id}>
-              {`${volunteer.firstName} ${volunteer.lastName}`}
+            <li key={volunteer.volunteer_id}>
+              {`${volunteer.volunteer_firstName} ${volunteer.volunteer_lastName}`}
             </li>
           );
         })}
-      </div>
+      </ul>
     </>
   );
 };

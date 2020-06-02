@@ -11,7 +11,7 @@ export const DELETE_STUDENT = "DELETE_STUDENT";
 export const getStudentData = () => (dispatch) => {
   dispatch({ type: GET_STUDENT_DATA_START });
   apiAuth()
-    .get("/student")
+    .get("/student/")
     .then((res) => {
       console.log(res);
       dispatch({ type: GET_STUDENT_DATA_SUCCESS, payload: res.data });

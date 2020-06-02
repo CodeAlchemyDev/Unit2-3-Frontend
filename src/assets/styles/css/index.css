@@ -116,6 +116,102 @@ header .headliner button:hover {
   transition: 0.25s all ease-in-out;
   color: #00aced;
 }
+div#student header {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+div#student header .topNav {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 60px;
+  justify-content: space-around;
+  align-content: center;
+}
+div#student header .topNav .leftNav {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  height: 100%;
+  margin-left: 3%;
+}
+div#student header .topNav .leftNav .logo {
+  margin: auto 0 auto 10px;
+  height: 40px;
+  width: 50px;
+}
+div#student header .topNav .leftNav .textStyler {
+  font-size: 20px;
+  height: 100%;
+  letter-spacing: 2px;
+  color: #fff;
+  font-family: "gPro";
+  line-height: 60px;
+  font-weight: 500;
+}
+div#student header .topNav .rightNav {
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+  height: 100%;
+  align-content: center;
+  justify-content: space-around;
+}
+div#student header .topNav nav {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  align-content: flex-end;
+}
+div#student header .headliner {
+  height: calc(100% - 60px);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+div#student header .headliner .titler {
+  margin: auto auto 0;
+  font-size: 40px;
+  font-family: "proxima_novaregular";
+  color: #fff;
+}
+div#student header .headliner .subTitler {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 25px;
+  font-family: "gProItalic";
+  text-align: center;
+  color: #fff;
+  font-weight: 400;
+}
+div#student header .headliner button {
+  width: 150px;
+  display: inline-block;
+  padding: 8px 11px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: 0px none;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: currentcolor none medium;
+  background-color: #00aced;
+  background-image: linear-gradient(to right, #4dd0e1, #1ee7e2);
+  color: black;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
+  margin: 10px auto;
+}
+div#student header .headliner button:hover {
+  background-image: none;
+  background-color: #4dd0e1;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 12px;
+}
 @font-face {
   font-family: 'gPro';
   src: url('../fonts/gProRegular.woff2') format('woff2'), url('../fonts/gProRegular.woff') format('woff');
@@ -262,8 +358,35 @@ header .headliner button:hover {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+#student-container {
+  background-image: url('../../images/student2.jpg');
+  background-size: contain;
+  background-color: #df8f44;
+  height: 100vh;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 90%;
+  padding: 20px;
+  height: 90vh;
+  margin: 0 auto;
+}
+.profile-data {
+  display: flex;
+  justify-content: space-evenly;
+}
+h2 {
+  width: 100%;
+  text-align: center;
+  color: #FFF;
+  font-size: 2.5rem;
+}
+h3 {
+  color: #FFF;
+  font-size: 2rem;
+}
 ul {
-  margin: 0;
+  margin: 0 auto;
   padding: 20px;
   width: 50%;
 }
@@ -271,9 +394,21 @@ ul li {
   font-size: 1.5rem;
   list-style-type: none;
   margin: 10px;
-  color: #FF0000;
+  color: #F2F2F2;
   padding: 5px;
   border-bottom: 1px solid #333;
+}
+.volunteer-list,
+.profile-fields {
+  width: 40%;
+  margin: 10px;
+  padding: 20px;
+}
+.profile-fields form {
+  display: flex;
+  flex-direction: column;
+  color: #FFF;
+  font-size: 1.5rem;
 }
 footer {
   display: flex;

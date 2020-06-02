@@ -1,3 +1,26 @@
+#student-container {
+  background-image: url('../../images/student2.jpg');
+  background-size: contain;
+  background-color: #df8f44;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+.profile-data {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+h2 {
+  width: 100%;
+  text-align: center;
+  color: #FFF;
+  font-size: 2em;
+}
 ul {
   margin: 0;
   padding: 20px;
@@ -7,7 +30,20 @@ ul li {
   font-size: 1.5rem;
   list-style-type: none;
   margin: 10px;
-  color: #FF0000;
+  color: #F2F2F2;
   padding: 5px;
   border-bottom: 1px solid #333;
+}
+.volunteer-list {
+  max-width: 30%;
+  margin: 10px;
+  padding: 20px;
+}
+.profile-fields {
+  color: #F2F2F2;
+  max-width: 30%;
+  margin: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
